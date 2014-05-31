@@ -1,1 +1,1 @@
-{"CommandEntryPoint":"http://rank.van2k.com/api/v1","RankingSettings":[{"id":1,"name":"総合ランキング","ScoreType":"LONG","AfterDecimalPoint":0,"SortType":"DESC","UpdateType":"PRESERVE_HIGHEST"}]}
+{"CommandEntryPoint":"http://rank.van2k.com/api/v1","RankingSettings":[{"id":1,"name":"総合ランキング","ScoreType":"LONG","AfterDecimalPoint":0,"SortType":"DESC","UpdateType":"PRESERVE_HIGHEST"}],"AchievementSettings":[{"id":1,"name":"1000点達成！"},{"id":2,"name":"2000点達成！"}]}

@@ -147,9 +147,21 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
         paint.getTextBounds(text, 0, text.length(), rect);
         canvas.drawText(text, (getWidth() - rect.width()) / 2, getHeight() / 4, paint);
 
+        // アチーブメント描画
+        paint.setTextSize(20);
+        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        if (mActivity.van2k.hasAchievementGiven(1)){
+            paint.setColor(Color.RED);
+            canvas.drawText("○", 20, 0 - fontMetrics.ascent, paint);
+        }
+        if (mActivity.van2k.hasAchievementGiven(2)){
+            paint.setColor(Color.GREEN);
+            canvas.drawText("◎", 50, 0 - fontMetrics.ascent, paint);
+        }
+
         // ボタン
         paint.setTextSize(30);
-        Paint.FontMetrics fontMetrics = paint.getFontMetrics();
+        fontMetrics = paint.getFontMetrics();
         for(int i = 0; i < title_button_rect.length; i++){
             String button_text = title_button_text[i];
             Rect button_rect = title_button_rect[i];
@@ -422,6 +434,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
     private void sendScore(){
         final int send_score = score;
 
+        // ランキングへ登録
         mHandler.post(new Runnable() {
             @Override
             public void run() {
@@ -433,6 +446,10 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                 });
             }
         });
+
+        // アチーブメントの授与
+        if (send_score >= 1000) mActivity.van2k.giveAchievement(1, null);
+        if (send_score >= 2000) mActivity.van2k.giveAchievement(2, null);
     }
 }
 
