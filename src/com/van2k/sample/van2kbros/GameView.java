@@ -155,7 +155,7 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
             canvas.drawText("○", 20, 0 - fontMetrics.ascent, paint);
         }
         if (mActivity.van2k.hasAchievementGiven(2)){
-            paint.setColor(Color.GREEN);
+            paint.setColor(Color.BLUE);
             canvas.drawText("◎", 50, 0 - fontMetrics.ascent, paint);
         }
 
@@ -444,12 +444,12 @@ public class GameView extends SurfaceView implements SurfaceHolder.Callback {
                         Log.d(MyActivity.TAG, "sendScore result: " + result.name());
                     }
                 });
+
+                // アチーブメントの授与
+                if (send_score >= 1000) mActivity.van2k.giveAchievement(1, null);
+                if (send_score >= 2000) mActivity.van2k.giveAchievement(2, null);
             }
         });
-
-        // アチーブメントの授与
-        if (send_score >= 1000) mActivity.van2k.giveAchievement(1, null);
-        if (send_score >= 2000) mActivity.van2k.giveAchievement(2, null);
     }
 }
 
